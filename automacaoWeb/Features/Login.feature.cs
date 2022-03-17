@@ -104,7 +104,7 @@ this.ScenarioInitialize(scenarioInfo);
 testRunner.Given("Que eu esteja na página de login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Dado ");
 #line hidden
 #line 6
-testRunner.When("Eu insiro as credenciais do usuário e clico em login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
+testRunner.When("Eu insiro as credenciais do usuário válido e clico em login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line hidden
 #line 7
 testRunner.Then("O login deve ser feito com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
