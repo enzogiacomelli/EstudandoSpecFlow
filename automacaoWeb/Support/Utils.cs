@@ -2,6 +2,7 @@
 {
     public class Utils
     {
-        public string baseUrl = "https://www.saucedemo.com/";
+        public string base_Url = "https://www.saucedemo.com/";
+        public string inventario_Url = "https://www.saucedemo.com/inventory.html";
     }
 }

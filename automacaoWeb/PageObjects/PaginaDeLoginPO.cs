@@ -1,10 +1,10 @@
 ﻿namespace automacaoWeb.PageObjects
 {
-    public class LoginPage
+    public class PaginaDeLoginPO
     {
         private IWebDriver _driver;
 
-        public LoginPage(IWebDriver driver) => _driver = driver;
+        public PaginaDeLoginPO(IWebDriver driver) => _driver = driver;
 
 
         public IWebElement username => _driver.FindElement(By.Name("user-name"));
@@ -24,6 +24,11 @@
             username.SendKeys(user.nomeDeUsuario);
             password.SendKeys(user.senha);
             loginBtn.Click();
+        }
+
+        public void verificaMensagemDeErro()
+        {
+            Assert.IsTrue(alertaErro.Displayed);
         }
     }
 }

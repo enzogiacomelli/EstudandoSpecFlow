@@ -17,6 +17,14 @@
         public Usuarios usuarioIncorreto()
         {
             Usuarios user = new Usuarios();
+            user.nomeDeUsuario = "user";
+            user.senha = "123";
+            return user;
+        }
+
+        public Usuarios usuarioBloqueado()
+        {
+            Usuarios user = new Usuarios();
             user.nomeDeUsuario = "locked_out_user";
             user.senha = "secret_sauce";
             return user;

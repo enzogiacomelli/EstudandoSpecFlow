@@ -1,11 +1,11 @@
 namespace automacaoWeb.StepDefinitions
 {
     [Binding]
-    public class LoginStepDefinitions
+    public class TestesDeLogin
     {
         private IWebDriver driver;
         Utils Utils = new Utils();
-        LoginPage loginPage;
+        PaginaDeLoginPO paginaDeLoginPO;
         Usuarios usuarios;
 
 
@@ -13,8 +13,8 @@ namespace automacaoWeb.StepDefinitions
         public void beforeScenario()
         {
             driver = NavegadorEdge.abrirNavegador();
-            driver.Navigate().GoToUrl(Utils.baseUrl);
-            loginPage = new LoginPage(driver);
+            driver.Navigate().GoToUrl(Utils.base_Url);
+            paginaDeLoginPO = new PaginaDeLoginPO(driver);
             usuarios = new Usuarios();
         }
 
@@ -29,31 +29,38 @@ namespace automacaoWeb.StepDefinitions
         [Given(@"Que eu esteja na página de login")]
         public void GivenQueEuEstejaNaPaginaDeLogin()
         {
-            loginPage.VerificaElementosNaPagina();
+            paginaDeLoginPO.VerificaElementosNaPagina();
         }
 
         [When(@"Eu insiro as credenciais do usuário válido e clico em login")]
         public void WhenEuInsiroAsCredenciaisDoUsuarioEClicoEmLogin()
         {
-            loginPage.LogIn(usuarios.usuarioCorreto());
+            paginaDeLoginPO.LogIn(usuarios.usuarioCorreto());
         }
 
         [When(@"Eu insiro as credenciais do usuário inválido e clico em login")]
         public void WhenEuInsiroAsCredenciaisDoUsuarioInvalidoEClicoEmLogin()
         {
-            loginPage.LogIn(usuarios.usuarioIncorreto());
+            paginaDeLoginPO.LogIn(usuarios.usuarioIncorreto());
         }
+
+        [When(@"Eu insiro as credenciais do usuário bloqueado e clico em login")]
+        public void WhenEuInsiroAsCredenciaisDoUsuarioBloqueadoEClicoEmLogin()
+        {
+            paginaDeLoginPO.LogIn(usuarios.usuarioBloqueado());
+        }
+
 
         [Then(@"O login deve ser feito com sucesso")]
         public void ThenOLoginDeveSerFeitoComSucesso()
         {
-            Assert.Pass();
+            Assert.IsTrue(driver.Url.Equals(Utils.inventario_Url));
         }
 
         [Then(@"O login deve falhar")]
         public void ThenOLoginDeveFalhar()
         {
-            Assert.Pass();
+            paginaDeLoginPO.verificaMensagemDeErro();
         }
 
     }
